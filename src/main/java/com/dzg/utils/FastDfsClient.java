@@ -219,7 +219,8 @@ public class FastDfsClient {
 
         /*StorageServer[] storages = getStoreStorages("group1");
         for (int i = 0; i < storages.length; i++) {
-            System.out.println(storages[i]);
+            System.out.println(storages[i].getSocket());
+            System.out.println(storages[i].getInetSocketAddress());
         }*/
 
         StorageServer storageServer = getStorageInfo("group1", "M00/00/04/CsRT5V5wkt6AFD3zAAOVh2NJNtY795.png");
