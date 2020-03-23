@@ -27,6 +27,7 @@ public class FastDfsFile {
     @ApiModelProperty(value = "文件上传者")
     private String author;//文件上传者
 
+
     public FastDfsFile() {
     }
 

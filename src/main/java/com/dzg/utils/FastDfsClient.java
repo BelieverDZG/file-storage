@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -199,6 +200,7 @@ public class FastDfsClient {
         String hostString = trackerServer.getInetSocketAddress().getHostString();
         return "http://" + hostString + ":" + ClientGlobal.getG_tracker_http_port() + "/";
     }
+
    static List<String> listUrl=new ArrayList<>();
     /**
      *
@@ -236,7 +238,8 @@ public class FastDfsClient {
     }
 
     public static void main(String[] args) throws IOException {
-    // upload();
+//        upload();
+
 //        deleteFile("group1", "M00/00/04/CsRT5V5wjPaAF3AvAAOVh2NJNtY800.png");
         /*InputStream inputStream = downloadFile("group1", "M00/00/04/CsRT5V5wjPaAF3AvAAOVh2NJNtY800.png");
 
@@ -255,7 +258,12 @@ public class FastDfsClient {
 
         /*StorageServer[] storages = getStoreStorages("group1");
         for (int i = 0; i < storages.length; i++) {
+<<<<<<< HEAD
             System.out.println(storages[i]);
+=======
+            System.out.println(storages[i].getSocket());
+            System.out.println(storages[i].getInetSocketAddress());
+>>>>>>> b723d6853bbac89b970d31fe1d28fdad367e97a4
         }*/
 
         StorageServer storageServer = getStorageInfo("group1", "M00/00/04/CsRT5V5wkt6AFD3zAAOVh2NJNtY795.png");

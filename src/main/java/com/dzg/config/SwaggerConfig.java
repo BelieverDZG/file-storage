@@ -1,5 +1,8 @@
 package com.dzg.config;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -13,9 +16,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
+
+    private static final Logger logger = LoggerFactory.getLogger(SwaggerConfig.class);
     @Bean
     public Docket createRestApi() {
-        System.out.println("Docket Bean已初始化");
+        logger.info("Docket Bean已初始化");
+
         return new Docket(DocumentationType.SWAGGER_2)
                 .pathMapping("/")
                 .select()
