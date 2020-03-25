@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.dzg.utils.FastDfsClient.getStorageClient;
+import static com.dzg.utils.FastDfsClient.getTrackerUrl;
 
 
 import jdk.nashorn.internal.parser.JSONParser;
@@ -67,7 +68,7 @@ public class FileController {
             String[] uploadResults = FastDfsClient.upload(fastDfsFile);
             if (uploadResults.length > 0) {
                 //返回文件上传后的路径
-                return FastDfsClient.getTrackerUrl() + uploadResults[0] + "/" + uploadResults[1] ;
+                return getTrackerUrl() + uploadResults[0] + "/" + uploadResults[1] ;
 
             }
 
@@ -132,7 +133,8 @@ public class FileController {
     @ApiOperation(value = "批量上传文件接口")
     @ApiImplicitParam(name = "file",value = "文件",required = true)
     public String  bacheUpload(File file) throws IOException, MyException {
-        List<String> directory = FastDfsClient.isDirectory(file);
+        List<String> directory=new ArrayList<>();
+        FastDfsClient.isDirectory(file,directory);
         if(directory.size()!=0){
             return "上传成功"+directory;
         }

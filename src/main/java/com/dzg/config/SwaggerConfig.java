@@ -28,7 +28,7 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.dzg.controller"))
                 .paths(PathSelectors.any())
                 .build()
-                .apiInfo(new ApiInfoBuilder().title("FastDFS文件接口")
+                .apiInfo(new ApiInfoBuilder().title("水利大数据文件存储接口")
                         .description("swagger统一管理接口")
                         .version("1.0.0")
                         .build());

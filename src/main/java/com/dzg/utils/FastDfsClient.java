@@ -17,6 +17,7 @@ public class FastDfsClient {
 
     private static final Logger logger = LoggerFactory.getLogger(FastDfsClient.class);
 
+
     /**
      * 加载客户端配置资源
      */
@@ -201,15 +202,14 @@ public class FastDfsClient {
         return "http://" + hostString + ":" + ClientGlobal.getG_tracker_http_port() + "/";
     }
 
-   static List<String> listUrl=new ArrayList<>();
+
     /**
      *
      * @param file
      * @throws IOException
      * @throws MyException
      */
-    public static List<String> isDirectory(File file) throws IOException, MyException {
-
+    public static void isDirectory(File file,List<String> listUrl) throws IOException, MyException {
         if(file.exists()){
             if (file.isFile()) {
                 TrackerClient trackerClient = new TrackerClient();
@@ -219,22 +219,20 @@ public class FastDfsClient {
                 String[] strings = storageClient.upload_file(file.getAbsolutePath(), "jpg", null);
                 listUrl.add(getTrackerUrl()+strings[0]+"/"+strings[1]);
 
-               // System.out.println(getTrackerUrl()+strings[0]+"/"+strings[1]);
             }else{
                 File[] list = file.listFiles();//list获取的结果：[D:\qrcodeFile\20190116, D:\qrcodeFile\20190117]
                 if (list.length == 0) {
                     System.out.println(file.getAbsolutePath() + " is null");
                 } else {
                     for (int i = 0; i < list.length; i++) {
-                        isDirectory(list[i]);
+                        isDirectory(list[i],listUrl);
                     }
                 }
             }
         }else{
             System.out.println("文件不存在！");
         }
-       // System.out.println(url);
-        return listUrl;
+
     }
 
     public static void main(String[] args) throws IOException {
